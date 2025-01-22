@@ -4,18 +4,18 @@ import { CreateTodo } from './components/CreateTodo'
 import {Todos} from './components/Todos'
 
 function App() {
-  // const [todos,setTodos]=useState([])
-  // fetch("http://localhost:3000/todos").then(async function(res){
-  //   const json=await res.json();
-  //   setTodos(json.todos);
-  // })
+  const [todos,setTodos]=useState([])
+  fetch("http://localhost:3000/todos").then(async function(res){
+    const json=await res.json();
+    setTodos(json.todos);
+  })
   console.log("hello")
   return (
     <div>
-      <CreateTodo></CreateTodo>
-      <Todos></Todos>
+      <CreateTodo ></CreateTodo>
+      <Todos todos={todos}></Todos>
     </div>
   )
 }
-
-export default App
+ 
+export default App;

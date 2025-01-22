@@ -1,10 +1,5 @@
-import { useState } from 'react'
-export function Todos(){
-    const [todos,setTodos]=useState([])
-   fetch("http://localhost:3000/todos").then(async function(res){
-    const json=await res.json();
-    setTodos(json.todos);
-  })
+export function Todos({todos}){
+
     return <div>
         {todos.map(function(todo,index){
             return <div key={index}>
