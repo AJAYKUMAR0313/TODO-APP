@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const { createTodo, updateTodo } = require("./types");
 const Todo = require("./db");
 
 const app = express();
 
 app.use(express.json());
+app.use(cors({}));
 
 app.post("/todo", async (req, res) => {
   const createPayload = req.body;
@@ -22,6 +24,7 @@ app.post("/todo", async (req, res) => {
     description: createPayload.description,
     completed: false,
   });
+
   res.json({
     msg: "Todo created",
   });
