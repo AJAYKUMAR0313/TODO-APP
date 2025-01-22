@@ -1,5 +1,6 @@
 const express = require("express");
 const { createTodo, updateTodo } = require("./types");
+const Todo = require("./db");
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.post("/todo", async (req, res) => {
   }
 
   //put it in mongodb
-  await todo.create({
+  await Todo.create({
     title: createPayload.title,
     description: createPayload.description,
     completed: false,
@@ -27,7 +28,7 @@ app.post("/todo", async (req, res) => {
 });
 
 app.get("/todos", async (req, res) => {
-  const todos = await todo.find({});
+  const todos = await Todo.find({});
   res.json({ todos });
 });
 
@@ -40,7 +41,7 @@ app.put("/completed", async (req, res) => {
     });
     return;
   }
-  await todo.update(
+  await Todo.updateOne(
     {
       _id: req.body.id,
     },

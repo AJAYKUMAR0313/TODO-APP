@@ -1,15 +1,15 @@
-const monggose = require("mongoose");
+const mongoose = require("mongoose");
 require("dotenv").config();
-mongoose.connect(process.env.dbUrl);
+mongoose.connect(
+  "mongodb+srv://kkajaykumar0313:e7NYPAouisxaf5wl@cluster0.1hvre.mongodb.net/"
+);
 
-const todoSchema = mongoose.schema({
+const todoSchema = mongoose.Schema({
   title: String,
   description: String,
   completed: Boolean,
 });
 
-const todo = monggose.model("todos", todoSchema);
+const Todo = mongoose.model("todo", todoSchema);
 
-module.exports = {
-  todo,
-};
+module.exports = Todo;
