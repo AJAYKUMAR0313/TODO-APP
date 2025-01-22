@@ -1,5 +1,6 @@
 const monggose = require("mongoose");
-mongoose.connect("mongodb+srv://kkajaykumar0313:e7NYPAouisxaf5wl@TODO-APP/");
+require("dotenv").config();
+mongoose.connect(process.env.dbUrl);
 
 const todoSchema = mongoose.schema({
   title: String,
